@@ -1,0 +1,7 @@
+---
+
+- include_tasks: pre_check.yml
+  when: pre_check|default(False)==True  
+  
+- include_tasks: pre_check_win.yml
+  when: pre_check_win|default(False)==True   

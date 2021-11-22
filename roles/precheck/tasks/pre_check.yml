@@ -1,0 +1,100 @@
+---
+
+- name: pre-check of {{inventory_hostname}}
+  shell: |
+         echo  >> {{path_log}}
+         echo 'Linux Pre-check of {{inventory_hostname}}*************' >> {{path_log}}
+         echo  >> {{path_log}}
+  ignore_errors: true
+  become: true    
+                
+- name: pre-check 1st command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '1st command: {{command01}}' >> {{path_log}}
+         {{command01}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command01|default('') | trim != ''
+    
+- name: pre-check 2nd command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '2nd command: {{command02}}' >> {{path_log}}
+         {{command02}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command02|default('') | trim != ''
+    
+- name: pre-check 3rd command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '3rd command: {{command03}}' >> {{path_log}}
+         {{command03}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command03|default('') | trim != ''
+    
+- name: pre-check 4th command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '4th command: {{command04}}' >> {{path_log}}
+         {{command04}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command04|default('') | trim != ''
+    
+- name: pre-check 5th command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '5th command: {{command05}}' >> {{path_log}}
+         {{command05}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command05|default('') | trim != ''
+    
+- name: pre-check 6th command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '6th command: {{command06}}' >> {{path_log}}
+         {{command06}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command06|default('') | trim != ''
+        
+- name: pre-check 7th command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '7th command: {{command07}}' >> {{path_log}}
+         {{command07}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command07|default('') | trim != ''
+        
+- name: pre-check 8th command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '8th command: {{command08}}' >> {{path_log}}
+         {{command08}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command08|default('') | trim != ''
+    
+- name: pre-check 9th command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '9th command: {{command09}}' >> {{path_log}}
+         {{command09}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command09|default('') | trim != ''
+        
+- name: pre-check 10th command
+  shell: |
+         echo  >> {{path_log}}  
+         echo '10th command: {{command10}}' >> {{path_log}}
+         {{command10}} >> {{path_log}} 2>&1
+  become: true
+  ignore_errors: true
+  when: command10|default('') | trim != ''
+        

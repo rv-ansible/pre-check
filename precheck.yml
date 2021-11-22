@@ -1,0 +1,62 @@
+---
+
+# extra variable send_mail=true  email_to: <ur email> 
+
+- name: Pre check linux
+  hosts: localhost ansible_connection=local
+  gather_facts: false
+  any_errors_fatal: false
+  ignore_unreachable: true  
+  #become: true
+  vars:
+    send_mail: false
+    tmp_folder: /tmp/precheck_tmp3                   
+    path_log:
+    log_file:
+    filename1: precheck
+    ext: txt   
+    email_body: "See the attachment {{filename1}}.{{ext}} to see the results of this run."    
+    email_subject: "test email"
+    email_group: "ricarte.venerayan@teranet.ca"
+    smtp_server: smtp-unix.corp.teranet.ca     
+    email_to: "ricarte.venerayan@teranet.ca"     
+    command01: 'hostname -s'
+    command02: "uname -a" #'dmidecode -s system-manufacturer'
+    #command03: 'vmware-toolbox-cmd -v'
+    #command04: 'systool -a -v -c scsi_host|grep firmware_revision'
+  roles: 
+    - { role: mail_logs, create_log: true, lines: false } 
+    - { role: precheck, pre_check: true }    
+    - { role: mail_logs, mail: true } 
+  tags: 
+    - pre_check    
+           
+- name: pre check windows
+  hosts: all 
+  become_method: runas
+  gather_facts: false
+  any_errors_fatal: false
+  ignore_unreachable: true
+  vars:
+    tmp_folder_win: c:\temp\precheck_tmp                 
+    path_log_win:
+    log_file_win:
+    log_file_tower_win:
+    filename1: precheck
+    ext: txt    
+    email_body: "See the attachment {{filename1}}.{{ext}} to see the results of this run."    
+    email_subject: 
+    email_group: 
+    smtp_server:      
+    send_mail: true
+    email_to2:  # only email_to2 works in windows    
+    win_command1: 'hostname'
+    win_command2: 'Get-WmiObject -class Win32_ComputerSystem'
+    win_command3: 'systeminfo | Select-String "OS Version:"'
+    win_command4: '(Get-WmiObject -class "cim_physicalmemory" | Measure-Object -Property Capacity -Sum).Sum/1024' #KB
+  roles: 
+    - { role: mail_logs, create_log_win: true, lines: false } 
+    - { role: precheck, pre_check_win: true }    
+    - { role: mail_logs, mail_win: true } 
+  tags:     
+    - pre_check_win

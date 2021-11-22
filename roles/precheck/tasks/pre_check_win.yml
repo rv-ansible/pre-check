@@ -1,0 +1,88 @@
+---
+
+- name: "pre-check of {{inventory_hostname}}"
+  win_shell: | 
+       echo '' >> {{path_log_win}}
+       echo 'Windows Pre-check of {{inventory_hostname}}*************' >> {{path_log_win}}
+  ignore_errors: true
+
+- name: 1st command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "1st command: {{win_command1}}" >> {{path_log_win}}
+      {{win_command1}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+  
+- name: 2nd command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "2nd command: {{win_command2}}" >> {{path_log_win}}
+      {{win_command2}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+  
+- name: 3rd command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "3rd command: {{win_command3}}" >> {{path_log_win}}
+      {{win_command3}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+    
+- name: 4th command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "4th command: {{win_command4}}" >> {{path_log_win}}
+      {{win_command4}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+  
+- name: 5th command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "5th command: {{win_command5}}" >> {{path_log_win}}
+      {{win_command5}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+  
+- name: 6th command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "6th command: {{win_command6}}" >> {{path_log_win}}
+      {{win_command6}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+  
+- name: 7th command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "7th command: {{win_command7}}" >> {{path_log_win}}
+      {{win_command7}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+  
+- name: 8th command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "8th command: {{win_command8}}" >> {{path_log_win}}
+      {{win_command8}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+  
+- name: 9th command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "9th command: {{win_command9}}" >> {{path_log_win}}
+      {{win_command9}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+  
+- name: 10th command
+  win_shell: |
+      echo '' >> {{path_log_win}}
+      echo "10th command: {{win_command10}}" >> {{path_log_win}}
+      {{win_command10}} >> {{path_log_win}} 2>&1
+  ignore_errors: true
+  when: win_command1|default('') | trim != ''
+  
